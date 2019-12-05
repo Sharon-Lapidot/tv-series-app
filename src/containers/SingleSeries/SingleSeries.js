@@ -18,6 +18,16 @@ export default class SingleSeries extends React.Component{
     render() {
         const {show} = this.state;
         console.log(show);
+        try {
+            var image =   <p>
+                <img alt={'show'} src={`${show.image.medium}`}/>
+                {/*<img alt={'show'} src={`${this.imgSrc}`}/>*/}
+            </p>
+        } catch (e) {
+            var image = <p style={{color:'red'}}>
+                image is missing
+            </p>
+        }
 
         return (
             <div>
@@ -25,12 +35,14 @@ export default class SingleSeries extends React.Component{
                 {
                     show !== null &&
                     <div>
+
                         <p>{show.name}
                         <p>Premiered - {show.premiered} </p></p>
                         <p>Rating - {show.rating.average}</p>
                         <p>Episodes - {show._embedded.episodes.length}</p>
                         <p>
-                            <img alt={'show'} src={`${show.image.medium}`}/>
+                            {image}
+                                {/*<img alt={'show'} src={`${show.image.medium}`}/>*/}
                         </p>
 
                         <div>
